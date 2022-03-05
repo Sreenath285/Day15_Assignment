@@ -1,0 +1,85 @@
+public class BinaryTreeService {
+
+    /***
+     * createNode method is to create node
+     * @param data - data which we have to give as root node
+     * @return root - returning root node
+     */
+    private MyNode createNode(int data) {
+
+        MyNode root = new MyNode();
+        root.data = data;
+        root.left = null;
+        root.right = null;
+        return root;
+    }
+
+    /***
+     * insertNode method is created to insert data
+     * @param node - node is to check the data
+     * @param data - inserting element into binary search tree
+     * @return - returning node
+     */
+    public MyNode insertNode(MyNode node, int data) {
+
+        if (node == null ) {
+            return createNode(data);
+        }
+        if (data < node.data) {
+            node.left = insertNode(node.left,data);
+        }
+        else if (data > node.data) {
+            node.right = insertNode(node.right,data);
+        }
+        return node;
+    }
+
+    /***
+     * preOrder method is created to print data as inserting data in binary search tree
+     * @param node - node is to check the data
+     */
+    public void preOrder(MyNode node) {
+        if (node == null) {
+            return;
+        }
+        System.out.println(node.data);
+        preOrder(node.left);
+        preOrder(node.right);
+    }
+
+    public int size(MyNode myNode) {
+
+        if (myNode == null) {
+            return 0;
+        }
+        else {
+            return (size(myNode.left) + 1 + (size(myNode.right)));
+        }
+    }
+
+    /***
+     * search method is created to search particular element in the tree
+     * @param node - node is to check the data
+     * @param data - element to be searched
+     * @return - returning true or false
+     */
+    public boolean search(MyNode node,int data) {
+
+        if (node == null)
+            return false;
+        boolean isPresent = false;
+        while (node != null) {
+            if (data < node.data) {
+                node = node.left;
+            }
+            else if(data > node.data) {
+                node = node.right;
+            }
+            else {
+                isPresent = true;
+                break;
+            }
+        }
+        return  isPresent;
+    }
+}
