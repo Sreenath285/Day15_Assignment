@@ -47,6 +47,11 @@ public class BinaryTreeService {
         preOrder(node.right);
     }
 
+     /***
+     * size method is created to check the size of the tree
+     * @param myNode - myNode is to check data
+     * @return size 
+     */
     public int size(MyNode myNode) {
 
         if (myNode == null) {
